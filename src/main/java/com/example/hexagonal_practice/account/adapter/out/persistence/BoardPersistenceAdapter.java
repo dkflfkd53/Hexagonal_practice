@@ -5,6 +5,7 @@ import com.example.hexagonal_practice.account.adapter.dto.response.BoardResponse
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.common.PersistenceAdapter;
+import com.example.hexagonal_practice.global.exception.board.BoardNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class BoardPersistenceAdapter implements BoardRepositoryPort {
 
     public Board findBoardById(Long boardId) {
         return boardRepository.findById(boardId)
-                .orElseThrow();
+                .orElseThrow(()-> BoardNotFoundException.EXCEPTION);
     }
 
     public List<BoardResponse> findAllBoard() {
@@ -38,7 +39,7 @@ public class BoardPersistenceAdapter implements BoardRepositoryPort {
 
     public void deleteBoardById(Long boardId) {
         Board board = boardRepository.findById(boardId)
-                        .orElseThrow();
+                        .orElseThrow(()->BoardNotFoundException.EXCEPTION);
 
         boardRepository.delete(board);
     }
