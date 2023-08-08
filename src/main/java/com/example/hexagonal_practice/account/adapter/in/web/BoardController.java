@@ -2,15 +2,13 @@ package com.example.hexagonal_practice.account.adapter.in.web;
 
 import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
 import com.example.hexagonal_practice.account.adapter.dto.response.BoardResponse;
-import com.example.hexagonal_practice.account.application.port.in.DeleteBoardUseCase;
-import com.example.hexagonal_practice.account.application.port.in.GetBoardDetailsUseCase;
-import com.example.hexagonal_practice.account.application.port.in.ModifyBoardUseCase;
-import com.example.hexagonal_practice.account.application.port.in.WriteBoardUseCase;
+import com.example.hexagonal_practice.account.application.port.in.*;
 import com.example.hexagonal_practice.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @WebAdapter
 @RestController
@@ -18,11 +16,9 @@ import javax.validation.Valid;
 public class BoardController {
 
     private final WriteBoardUseCase writeBoardUseCase;
-
     private final GetBoardDetailsUseCase getBoardDetailsUseCase;
-
+    private final GetBoardListUseCase getBoardListUseCase;
     private final ModifyBoardUseCase modifyBoardUseCase;
-
     private final DeleteBoardUseCase deleteBoardUseCase;
 
     @PostMapping("/board")
@@ -33,6 +29,11 @@ public class BoardController {
     @GetMapping("/board/{boardId}")
     public BoardResponse getBoardDetails(@PathVariable Long boardId) {
         return getBoardDetailsUseCase.getBoardDetails(boardId);
+    }
+
+    @GetMapping("/board/list")
+    public List<BoardResponse> getBoardList() {
+        return getBoardListUseCase.getBoardList();
     }
 
     @PatchMapping("/board/{boardId}")
