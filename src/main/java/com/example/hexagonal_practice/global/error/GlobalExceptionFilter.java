@@ -1,5 +1,7 @@
 package com.example.hexagonal_practice.global.error;
 
+import com.example.hexagonal_practice.global.error.exception.BusinessException;
+import com.example.hexagonal_practice.global.error.exception.ErrorCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.filter.OncePerRequestFilter;

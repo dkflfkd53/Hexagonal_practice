@@ -1,5 +1,7 @@
 package com.example.hexagonal_practice.global.error;
 
+import com.example.hexagonal_practice.global.error.exception.BusinessException;
+import com.example.hexagonal_practice.global.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;

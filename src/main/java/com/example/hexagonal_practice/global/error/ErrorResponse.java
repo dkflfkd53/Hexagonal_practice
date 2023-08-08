@@ -1,5 +1,6 @@
 package com.example.hexagonal_practice.global.error;
 
+import com.example.hexagonal_practice.global.error.exception.ErrorCode;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
