@@ -1,7 +1,7 @@
 package com.example.hexagonal_practice.global.security.auth;
 
-import com.example.hexagonal_practice.account.adapter.out.persistence.UserRepository;
-import com.example.hexagonal_practice.account.domain.User;
+import com.example.hexagonal_practice.domain.user.adapter.out.persistence.UserRepository;
+import com.example.hexagonal_practice.domain.user.domain.User;
 import com.example.hexagonal_practice.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

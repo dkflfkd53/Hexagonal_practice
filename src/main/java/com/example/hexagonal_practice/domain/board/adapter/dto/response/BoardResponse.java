@@ -1,6 +1,6 @@
-package com.example.hexagonal_practice.domain.board.account.adapter.dto.response;
+package com.example.hexagonal_practice.domain.board.adapter.dto.response;
 
-import com.example.hexagonal_practice.domain.board.account.domain.Board;
+import com.example.hexagonal_practice.domain.board.domain.Board;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

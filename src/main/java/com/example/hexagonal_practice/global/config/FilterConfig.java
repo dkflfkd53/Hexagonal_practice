@@ -1,6 +1,8 @@
 package com.example.hexagonal_practice.global.config;
 
 import com.example.hexagonal_practice.global.error.GlobalExceptionFilter;
+import com.example.hexagonal_practice.global.security.jwt.JwtFilter;
+import com.example.hexagonal_practice.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;

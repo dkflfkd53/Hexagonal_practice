@@ -1,15 +1,19 @@
 package com.example.hexagonal_practice.global.security.jwt;
 
-import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
-import com.example.hexagonal_practice.account.adapter.out.persistence.RefreshTokenRepository;
-import com.example.hexagonal_practice.account.domain.RefreshToken;
+import com.example.hexagonal_practice.domain.board.adapter.dto.response.TokenResponse;
+import com.example.hexagonal_practice.domain.auth.adapter.out.persistence.RefreshTokenRepository;
+import com.example.hexagonal_practice.domain.auth.domain.RefreshToken;
 import com.example.hexagonal_practice.global.exception.token.ExpiredTokenException;
 import com.example.hexagonal_practice.global.exception.token.InvalidTokenException;
+import com.example.hexagonal_practice.global.security.auth.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -22,6 +26,7 @@ import java.util.TimeZone;
 public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
+    private final CustomUserDetailsService customUserDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
 
     public TokenResponse createToken(String userId){
@@ -48,6 +53,7 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
     }
+
     public String createRefreshToken(String userId) {
 
         Date now = new Date();
@@ -67,6 +73,13 @@ public class JwtTokenProvider {
                         .build());
 
         return refreshToken;
+    }
+
+    // 토큰에 담겨있는 userId로 SpringSecurity Authentication 정보를 반환하는 메서드
+    public Authentication getAuthentication(String token) {
+        Claims claims = getClaims(token);
+        UserDetails userDetails = customUserDetailsService.loadUserByUsername(claims.getSubject());
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
     private Claims getClaims(String token) {

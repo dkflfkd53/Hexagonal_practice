@@ -1,9 +1,9 @@
-package com.example.hexagonal_practice.domain.board.account.adapter.out.persistence;
+package com.example.hexagonal_practice.domain.board.adapter.out.persistence;
 
-import com.example.hexagonal_practice.domain.board.account.adapter.dto.request.BoardRequest;
-import com.example.hexagonal_practice.domain.board.account.adapter.dto.response.BoardResponse;
-import com.example.hexagonal_practice.domain.board.account.application.port.out.BoardRepositoryPort;
-import com.example.hexagonal_practice.domain.board.account.domain.Board;
+import com.example.hexagonal_practice.domain.board.adapter.dto.request.BoardRequest;
+import com.example.hexagonal_practice.domain.board.adapter.dto.response.BoardResponse;
+import com.example.hexagonal_practice.domain.board.application.port.out.BoardRepositoryPort;
+import com.example.hexagonal_practice.domain.board.domain.Board;
 import com.example.hexagonal_practice.common.PersistenceAdapter;
 import com.example.hexagonal_practice.global.exception.board.BoardNotFoundException;
 import lombok.RequiredArgsConstructor;
