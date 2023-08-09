@@ -16,6 +16,7 @@ public enum ErrorCode {
 
     //user
     USER_NOT_FOUND(404,"User not found"),
+    PASSWORD_MISMATCH(404,"Password mismatch"),
 
     //board
     BOARD_NOT_FOUND(404, "Board not found"),
