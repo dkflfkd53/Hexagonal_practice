@@ -1,8 +1,8 @@
 package com.example.hexagonal_practice.global.security.jwt;
 
-import com.example.hexagonal_practice.domain.board.adapter.dto.response.TokenResponse;
-import com.example.hexagonal_practice.domain.auth.adapter.out.persistence.RefreshTokenRepository;
-import com.example.hexagonal_practice.domain.auth.domain.RefreshToken;
+import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
+import com.example.hexagonal_practice.account.adapter.out.persistence.RefreshTokenRepository;
+import com.example.hexagonal_practice.account.domain.RefreshToken;
 import com.example.hexagonal_practice.global.exception.token.ExpiredTokenException;
 import com.example.hexagonal_practice.global.exception.token.InvalidTokenException;
 import com.example.hexagonal_practice.global.security.auth.CustomUserDetailsService;

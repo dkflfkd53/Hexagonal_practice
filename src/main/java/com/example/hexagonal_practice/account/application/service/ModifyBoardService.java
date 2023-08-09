@@ -1,8 +1,9 @@
-package com.example.hexagonal_practice.domain.account.application.service;
+package com.example.hexagonal_practice.account.application.service;
 
-import com.example.hexagonal_practice.domain.account.adapter.dto.request.BoardRequest;
-import com.example.hexagonal_practice.domain.account.application.port.out.BoardRepositoryPort;
-import com.example.hexagonal_practice.domain.account.domain.Board;
+import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
+import com.example.hexagonal_practice.account.application.port.in.ModifyBoardUseCase;
+import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
+import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.common.UseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;

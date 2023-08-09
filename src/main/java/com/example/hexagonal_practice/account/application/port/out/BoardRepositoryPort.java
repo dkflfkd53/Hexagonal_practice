@@ -1,8 +1,8 @@
-package com.example.hexagonal_practice.domain.account.application.port.out;
+package com.example.hexagonal_practice.account.application.port.out;
 
-import com.example.hexagonal_practice.domain.account.adapter.dto.request.BoardRequest;
-import com.example.hexagonal_practice.domain.account.adapter.dto.response.BoardResponse;
-import com.example.hexagonal_practice.domain.account.domain.Board;
+import com.example.hexagonal_practice.account.domain.Board;
+import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
+import com.example.hexagonal_practice.account.adapter.dto.response.BoardResponse;
 
 import java.util.List;
 

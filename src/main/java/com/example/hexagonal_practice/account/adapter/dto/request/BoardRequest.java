@@ -1,4 +1,4 @@
-package com.example.hexagonal_practice.domain.account.adapter.dto.request;
+package com.example.hexagonal_practice.account.adapter.dto.request;
 
 import lombok.AccessLevel;
 import lombok.Getter;

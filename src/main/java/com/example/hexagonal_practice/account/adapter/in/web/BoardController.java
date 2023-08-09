@@ -1,8 +1,9 @@
-package com.example.hexagonal_practice.domain.account.adapter.in.web;
+package com.example.hexagonal_practice.account.adapter.in.web;
 
+import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
+import com.example.hexagonal_practice.account.adapter.dto.response.BoardResponse;
+import com.example.hexagonal_practice.account.application.port.in.*;
 import com.example.hexagonal_practice.common.WebAdapter;
-import com.example.hexagonal_practice.domain.account.adapter.dto.request.BoardRequest;
-import com.example.hexagonal_practice.domain.account.adapter.dto.response.BoardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

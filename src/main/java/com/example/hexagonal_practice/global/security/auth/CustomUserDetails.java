@@ -1,6 +1,6 @@
 package com.example.hexagonal_practice.global.security.auth;
 
-import com.example.hexagonal_practice.domain.user.domain.User;
+import com.example.hexagonal_practice.account.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
