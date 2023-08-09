@@ -14,6 +14,9 @@ public enum ErrorCode {
     INVALID_TOKEN(401, "Invalid token"),
     REFRESH_TOKEN_NOT_FOUND(403,"RefreshToken not found"),
 
+    //user
+    USER_NOT_FOUND(404,"User not found"),
+
     //board
     BOARD_NOT_FOUND(404, "Board not found"),
 
