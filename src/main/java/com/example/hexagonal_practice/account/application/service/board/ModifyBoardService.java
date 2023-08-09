@@ -1,7 +1,7 @@
-package com.example.hexagonal_practice.account.application.service;
+package com.example.hexagonal_practice.account.application.service.board;
 
 import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
-import com.example.hexagonal_practice.account.application.port.in.ModifyBoardUseCase;
+import com.example.hexagonal_practice.account.application.port.in.board.ModifyBoardUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.common.UseCase;

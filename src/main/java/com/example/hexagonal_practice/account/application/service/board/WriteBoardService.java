@@ -1,7 +1,7 @@
-package com.example.hexagonal_practice.account.application.service;
+package com.example.hexagonal_practice.account.application.service.board;
 
 import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
-import com.example.hexagonal_practice.account.application.port.in.WriteBoardUseCase;
+import com.example.hexagonal_practice.account.application.port.in.board.WriteBoardUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.common.UseCase;
 import lombok.RequiredArgsConstructor;

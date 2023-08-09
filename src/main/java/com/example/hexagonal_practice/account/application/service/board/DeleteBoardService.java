@@ -1,6 +1,6 @@
-package com.example.hexagonal_practice.account.application.service;
+package com.example.hexagonal_practice.account.application.service.board;
 
-import com.example.hexagonal_practice.account.application.port.in.DeleteBoardUseCase;
+import com.example.hexagonal_practice.account.application.port.in.board.DeleteBoardUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.common.UseCase;
 import lombok.RequiredArgsConstructor;
