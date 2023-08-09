@@ -7,7 +7,10 @@ import com.example.hexagonal_practice.account.application.port.in.user.SignUpUse
 import com.example.hexagonal_practice.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @WebAdapter
 @RestController
@@ -18,13 +21,15 @@ public class UserController {
     private final LoginUseCase loginUseCase;
 
     @PostMapping("/signup")
-    public void signUp(UserRequest request) {
+    public void signUp(@RequestBody @Valid UserRequest request) {
         signUpUseCase.signUp(request);
     }
 
     @PostMapping("/login")
-    public TokenResponse login(UserRequest request) {
+    public TokenResponse login(@RequestBody @Valid UserRequest request) {
         return loginUseCase.login(request);
     }
+
+
 
 }
