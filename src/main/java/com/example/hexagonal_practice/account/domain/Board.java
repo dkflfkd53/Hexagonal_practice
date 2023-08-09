@@ -1,4 +1,4 @@
-package com.example.hexagonal_practice.account.domain;
+package com.example.hexagonal_practice.domain.account.domain;
 
 import lombok.*;
 
@@ -12,14 +12,19 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class User {
+public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userId;
+    private String title;
 
-    private String password;
+    private String content;
+
+    public void modifyBoard(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 
 }
