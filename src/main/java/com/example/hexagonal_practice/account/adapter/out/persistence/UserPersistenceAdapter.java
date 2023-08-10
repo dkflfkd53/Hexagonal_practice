@@ -21,4 +21,8 @@ public class UserPersistenceAdapter implements UserRepositoryPort {
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }
 
+    public boolean exist(String userId) {
+        return userRepository.findByUserId(userId).isPresent();
+    }
+
 }

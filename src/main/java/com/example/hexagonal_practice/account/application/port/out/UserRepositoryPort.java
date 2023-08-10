@@ -8,4 +8,6 @@ public interface UserRepositoryPort {
 
     User findUserByUserId(String userId);
 
+    boolean exist(String userId);
+
 }
