@@ -1,6 +1,7 @@
 package com.example.hexagonal_practice.account.application.service.user;
 
 import com.example.hexagonal_practice.account.adapter.dto.request.UserRequest;
+import com.example.hexagonal_practice.account.application.port.in.user.DuplicatedUserIdUseCase;
 import com.example.hexagonal_practice.account.application.port.in.user.SignUpUseCase;
 import com.example.hexagonal_practice.account.application.port.out.UserRepositoryPort;
 import com.example.hexagonal_practice.account.domain.User;
@@ -16,9 +17,10 @@ public class SignUpService implements SignUpUseCase {
 
     private final UserRepositoryPort userRepositoryPort;
     private final PasswordEncoder passwordEncoder;
+    private final DuplicatedUserIdUseCase duplicatedUserIdUseCase;
 
     public void signUp(UserRequest request) {
-
+        duplicatedUserIdUseCase.duplicatedUserId(request.getUserId());
         String password = passwordEncoder.encode(request.getPassword());
 
         User user = User.builder()
