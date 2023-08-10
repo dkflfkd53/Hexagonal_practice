@@ -29,18 +29,6 @@ public class JwtTokenProvider {
     private final CustomUserDetailsService customUserDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    public TokenResponse createToken(String userId){
-        Date now = new Date();
-        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul")); // 고객의 위치에 맞게 설정
-        return TokenResponse
-                .builder()
-                .accessToken(createAccessToken(userId))
-                .refreshToken(createRefreshToken(userId))
-                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
-                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
-                .build();
-    }
-
     public String createAccessToken(String userId) {
 
         Date now = new Date();
