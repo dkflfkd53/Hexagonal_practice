@@ -12,8 +12,11 @@ public class UserResponse {
 
     private String username;
 
+    private String email;
+
     public UserResponse(User user) {
         userId = user.getUserId();
         username = user.getUsername();
+        email = user.getEmail();
     }
 }
