@@ -1,5 +1,8 @@
 package com.example.hexagonal_practice.global.config;
 
+import com.example.hexagonal_practice.global.error.GlobalExceptionFilter;
+import com.example.hexagonal_practice.global.security.auth.PrincipalOauth2UserService;
+import com.example.hexagonal_practice.global.security.jwt.JwtFilter;
 import com.example.hexagonal_practice.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -17,6 +21,7 @@ public class SecurityConfig {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final ObjectMapper objectMapper;
+    private final PrincipalOauth2UserService principalOauth2UserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -26,7 +31,10 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
 
-        return httpSecurity
+        JwtFilter jwtTokenFilter = new JwtFilter(jwtTokenProvider);
+        GlobalExceptionFilter globalExceptionFilter = new GlobalExceptionFilter(objectMapper);
+
+        httpSecurity
                 .csrf().disable()
                 .cors().and()
                 .exceptionHandling()
@@ -42,15 +50,36 @@ public class SecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login/**","/signup/**").permitAll()
+                .antMatchers("/security-login/info").authenticated()
+                .antMatchers("/login/**", "/signup/**").permitAll()
                 .antMatchers("/board/**", "/user/**").authenticated()
                 .anyRequest().permitAll()
+                .and()
+
+                .formLogin()
+
+                .usernameParameter("loginId")
+                .passwordParameter("password")
+                .loginPage("/security-login/login")
+                .defaultSuccessUrl("/security-login")
+                .failureUrl("/security-login/login")
+                .and()
+                .logout()
+                .logoutUrl("/security-login/logout")
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID")
+
 
                 .and()
-                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
-                .and()
-                .build();
+                .oauth2Login()
+                .loginPage("/security-login/login")
+                .defaultSuccessUrl("/security-login")
+                .userInfoEndpoint()
+                .userService(principalOauth2UserService);
 
+        httpSecurity.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterAfter(globalExceptionFilter, JwtFilter.class);
+
+        return httpSecurity.build();
     }
 
 }
