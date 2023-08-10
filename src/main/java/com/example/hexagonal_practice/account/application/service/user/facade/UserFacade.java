@@ -4,8 +4,10 @@ import com.example.hexagonal_practice.account.application.port.out.UserRepositor
 import com.example.hexagonal_practice.account.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class UserFacade {
     private final UserRepositoryPort userRepositoryPort;
 
