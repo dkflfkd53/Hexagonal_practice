@@ -18,6 +18,7 @@ public class SignUpService implements SignUpUseCase {
         User user = User.builder()
                 .userId(request.getUserId())
                 .username(request.getUsername())
+                .email(request.getEmail())
                 .password(request.getPassword())
                 .build();
 
