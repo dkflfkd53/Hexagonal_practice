@@ -25,3 +25,5 @@ jwt:
   secret: lhjljlasndflasjdkfasdkfnasdasjidkflajsdkfahsdfjkafewfawefwaefeawfw
   accessExpiration: 3600
   refreshExpiration: 271000
+server:
+  port: 8080
