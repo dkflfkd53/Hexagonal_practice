@@ -1,10 +1,12 @@
-package com.example.hexagonal_practice.account.adapter.out.persistence;
+package com.example.hexagonal_practice.account.adapter.out.persistence.board;
 
 import com.example.hexagonal_practice.account.adapter.dto.response.BoardResponse;
+import com.example.hexagonal_practice.account.adapter.out.persistence.board.BoardRepository;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.common.PersistenceAdapter;
 import com.example.hexagonal_practice.global.exception.board.BoardNotFoundException;
+import com.example.hexagonal_practice.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -37,6 +39,11 @@ public class BoardPersistenceAdapter implements BoardRepositoryPort {
                         .orElseThrow(()-> BoardNotFoundException.EXCEPTION);
 
         boardRepository.delete(board);
+    }
+
+    public Board findBoardByUserId(Long userId) {
+        return boardRepository.findByUserId(userId)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }
 
 }
