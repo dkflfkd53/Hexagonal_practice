@@ -1,4 +1,4 @@
-package com.example.hexagonal_practice.account.adapter.out.persistence;
+package com.example.hexagonal_practice.account.adapter.out.persistence.user;
 
 import com.example.hexagonal_practice.account.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
