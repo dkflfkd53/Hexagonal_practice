@@ -14,4 +14,7 @@ public class BoardRequest {
 
     @NotNull
     private String content;
+
+    @NotNull
+    private Long memberNumber;
 }

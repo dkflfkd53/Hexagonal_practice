@@ -18,7 +18,7 @@ public class ModifyBoardService implements ModifyBoardUseCase {
     public void modifyBoard(Long boardId, BoardRequest request) {
         Board board = boardRepositoryPort.findBoardById(boardId);
 
-        board.modifyBoard(request.getTitle(), request.getContent());
+        board.modifyBoard(request.getTitle(), request.getContent(), request.getMemberNumber());
     }
 
 }

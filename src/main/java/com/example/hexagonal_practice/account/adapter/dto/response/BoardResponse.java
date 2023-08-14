@@ -12,8 +12,11 @@ public class BoardResponse {
 
     private String content;
 
+    private Long memberNumber;
+
     public BoardResponse(Board board) {
         title = board.getTitle();
         content = board.getContent();
+        memberNumber = board.getMemberNumber();
     }
 }

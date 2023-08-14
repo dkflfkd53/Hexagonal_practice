@@ -21,8 +21,15 @@ public class Board {
 
     private String content;
 
-    public void modifyBoard(String title, String content) {
+    private Long memberNumber;
+
+    public void joinMember() {
+        memberNumber++;
+    }
+
+    public void modifyBoard(String title, String content, Long memberNumber) {
         this.title = title;
         this.content = content;
+        this.memberNumber = memberNumber;
     }
 }
