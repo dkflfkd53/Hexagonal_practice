@@ -1,6 +1,6 @@
 package com.example.hexagonal_practice.global.security.auth;
 
-import com.example.hexagonal_practice.account.adapter.out.persistence.UserRepository;
+import com.example.hexagonal_practice.account.adapter.out.persistence.user.UserRepository;
 import com.example.hexagonal_practice.account.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,5 +45,5 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         return new CustomUserOauth(user, oAuth2User.getAttributes());
     }
-    
+
 }

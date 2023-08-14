@@ -1,7 +1,6 @@
 package com.example.hexagonal_practice.global.security.jwt;
 
-import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
-import com.example.hexagonal_practice.account.adapter.out.persistence.RefreshTokenRepository;
+import com.example.hexagonal_practice.account.adapter.out.persistence.token.RefreshTokenRepository;
 import com.example.hexagonal_practice.account.domain.RefreshToken;
 import com.example.hexagonal_practice.global.exception.token.ExpiredTokenException;
 import com.example.hexagonal_practice.global.exception.token.InvalidTokenException;
@@ -19,7 +18,6 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.TimeZone;
 
 @Component
 @RequiredArgsConstructor

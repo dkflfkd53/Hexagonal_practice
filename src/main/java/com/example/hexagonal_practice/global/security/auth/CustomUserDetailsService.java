@@ -1,6 +1,6 @@
 package com.example.hexagonal_practice.global.security.auth;
 
-import com.example.hexagonal_practice.account.adapter.out.persistence.UserRepository;
+import com.example.hexagonal_practice.account.adapter.out.persistence.user.UserRepository;
 import com.example.hexagonal_practice.account.domain.User;
 import com.example.hexagonal_practice.global.exception.user.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
