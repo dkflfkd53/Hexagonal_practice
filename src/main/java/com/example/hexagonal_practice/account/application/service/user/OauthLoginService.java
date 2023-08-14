@@ -2,45 +2,63 @@ package com.example.hexagonal_practice.account.application.service.user;
 
 import com.example.hexagonal_practice.account.application.port.in.user.OauthLoginUseCase;
 import com.example.hexagonal_practice.common.UseCase;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.core.env.Environment;
+import org.springframework.http.*;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @UseCase
-@Transactional
 public class OauthLoginService implements OauthLoginUseCase {
 
-    private final String GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
-    @Value("${CLIENT_ID}")
-    private String GOOGLE_CLIENT_ID;
-    @Value("${CLIENT_PASSWORD}")
-    private String GOOGLE_CLIENT_SECRET;
-    @Value("${REDIRECT_URL}")
-    private String LOGIN_REDIRECT_URL;
+    private final Environment env;
+    private final RestTemplate restTemplate = new RestTemplate();
 
-    public ResponseEntity<String> getGoogleAccessToken(String accessCode) {
+    public void oauthLogin(String code, String registrationId) {
+        String accessToken = getAccessToken(code, registrationId);
+        JsonNode userResourceNode = getUserResource(accessToken, registrationId);
+        System.out.println("userResourceNode = " + userResourceNode);
 
-        RestTemplate restTemplate = new RestTemplate();
-        Map<String, String> params = new HashMap<>();
+        String id = userResourceNode.get("id").asText();
+        String email = userResourceNode.get("email").asText();
+        String nickname = userResourceNode.get("name").asText();
+        System.out.println("id = " + id);
+        System.out.println("email = " + email);
+        System.out.println("nickname = " + nickname);
+    }
 
-        params.put("code", accessCode);
-        params.put("client_id", GOOGLE_CLIENT_ID);
-        params.put("client_secret", GOOGLE_CLIENT_SECRET);
-        params.put("redirect_uri", LOGIN_REDIRECT_URL);
-        params.put("grant_type", "authorization_code");
+    private String getAccessToken(String authorizationCode, String registrationId) {
+        String clientId = env.getProperty("oauth2." + registrationId + ".client-id");
+        String clientSecret = env.getProperty("oauth2." + registrationId + ".client-secret");
+        String redirectUri = env.getProperty("oauth2." + registrationId + ".redirect-uri");
+        String tokenUri = env.getProperty("oauth2." + registrationId + ".token-uri");
 
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(GOOGLE_TOKEN_URL,params,String.class);
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("code", authorizationCode);
+        params.add("client_id", clientId);
+        params.add("client_secret", clientSecret);
+        params.add("redirect_uri", redirectUri);
+        params.add("grant_type", "authorization_code");
 
-        if(responseEntity.getStatusCode() == HttpStatus.OK) {
-            return responseEntity;
-        }
-        return null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        HttpEntity entity = new HttpEntity(params, headers);
+
+        ResponseEntity<JsonNode> responseNode = restTemplate.exchange(tokenUri, HttpMethod.POST, entity, JsonNode.class);
+        JsonNode accessTokenNode = responseNode.getBody();
+        return accessTokenNode.get("access_token").asText();
+    }
+
+    private JsonNode getUserResource(String accessToken, String registrationId) {
+        String resourceUri = env.getProperty("oauth2."+registrationId+".resource-uri");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + accessToken);
+        HttpEntity entity = new HttpEntity(headers);
+        return restTemplate.exchange(resourceUri, HttpMethod.GET, entity, JsonNode.class).getBody();
     }
 }
