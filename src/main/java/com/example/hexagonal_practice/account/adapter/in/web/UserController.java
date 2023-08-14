@@ -17,7 +17,6 @@ import javax.validation.Valid;
 @WebAdapter
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/login/oauth2", produces = "application/json")
 public class UserController {
 
     private final SignUpUseCase signUpUseCase;
@@ -40,9 +39,11 @@ public class UserController {
         return getMyInfoUseCase.getMyInfo();
     }
 
-    @PostMapping("/code")
-    public ResponseEntity<String> oauthLogin(@RequestParam("code") String accessCode) {
-        return oauthLoginUseCase.getGoogleAccessToken(accessCode);
+    @RequestMapping(value = "/login/oauth2", produces = "application/json")
+    @GetMapping("/code/{registrationId}")
+    public void googleLogin(@RequestParam String code, @PathVariable String registrationId) {
+        oauthLoginUseCase.oauthLogin(code, registrationId);
     }
+
 
 }
