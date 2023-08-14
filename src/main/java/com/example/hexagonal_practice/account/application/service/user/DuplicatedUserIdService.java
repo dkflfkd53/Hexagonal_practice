@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 @UseCase
 @Transactional
 public class DuplicatedUserIdService implements DuplicatedUserIdUseCase {
-
     private final UserRepositoryPort userRepositoryPort;
 
     public void duplicatedUserId(String userId) {
@@ -19,5 +18,4 @@ public class DuplicatedUserIdService implements DuplicatedUserIdUseCase {
             throw UserExistException.EXCEPTION;
         }
     }
-
 }

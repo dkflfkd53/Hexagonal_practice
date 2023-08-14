@@ -20,4 +20,5 @@ public class GetBoardDetailsService implements GetBoardDetailsUseCase {
 
         return new BoardResponse(board);
     }
+
 }

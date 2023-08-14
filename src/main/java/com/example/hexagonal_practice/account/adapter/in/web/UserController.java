@@ -9,7 +9,6 @@ import com.example.hexagonal_practice.account.application.port.in.user.OauthLogi
 import com.example.hexagonal_practice.account.application.port.in.user.SignUpUseCase;
 import com.example.hexagonal_practice.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -44,6 +43,5 @@ public class UserController {
     public void googleLogin(@RequestParam String code, @PathVariable String registrationId) {
         oauthLoginUseCase.oauthLogin(code, registrationId);
     }
-
 
 }

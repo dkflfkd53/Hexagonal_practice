@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardResponse {
-
     private String title;
 
     private String content;
@@ -17,5 +16,4 @@ public class BoardResponse {
         title = board.getTitle();
         content = board.getContent();
     }
-
 }

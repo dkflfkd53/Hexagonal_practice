@@ -9,11 +9,9 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardRequest {
-
     @NotNull
     private String title;
 
     @NotNull
     private String content;
-
 }

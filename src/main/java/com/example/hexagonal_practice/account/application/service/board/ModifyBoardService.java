@@ -20,4 +20,5 @@ public class ModifyBoardService implements ModifyBoardUseCase {
 
         board.modifyBoard(request.getTitle(), request.getContent());
     }
+
 }

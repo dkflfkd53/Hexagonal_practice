@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserRequest {
-
     @NotNull
     private String userId;
 
@@ -21,5 +20,4 @@ public class UserRequest {
 
     @NotNull
     private String password;
-
 }

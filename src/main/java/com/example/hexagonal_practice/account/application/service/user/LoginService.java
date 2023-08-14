@@ -26,7 +26,6 @@ public class LoginService implements LoginUseCase {
     private final JwtProperties jwtProperties;
 
     public TokenResponse login(UserRequest request) {
-
         Date now = new Date();
 
         User user = userRepositoryPort.findUserByUserId(request.getUserId());
@@ -41,7 +40,6 @@ public class LoginService implements LoginUseCase {
                 .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
                 .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
                 .build();
-
     }
 
 }

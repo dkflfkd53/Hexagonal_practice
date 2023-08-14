@@ -10,8 +10,6 @@ import java.lang.annotation.*;
 @Documented
 @Component
 public @interface WebAdapter {
-
     @AliasFor(annotation = Component.class)
     String value() default "";
-
 }

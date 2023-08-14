@@ -10,8 +10,6 @@ import java.lang.annotation.*;
 @Documented
 @Component
 public @interface PersistenceAdapter {
-
     @AliasFor(annotation = Component.class)
     String value() default "";
-
 }

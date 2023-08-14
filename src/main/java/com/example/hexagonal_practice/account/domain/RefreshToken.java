@@ -11,7 +11,6 @@ import org.springframework.data.redis.core.index.Indexed;
 @Builder
 @RedisHash
 public class RefreshToken {
-
     @Id
     private String userId;
 
@@ -20,5 +19,4 @@ public class RefreshToken {
 
     @TimeToLive
     private Long timeToLive;
-
 }
