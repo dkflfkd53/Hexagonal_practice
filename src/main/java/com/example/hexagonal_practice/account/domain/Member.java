@@ -14,13 +14,5 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Board board;
-
     private String username;
-
-    public void joinBoard() {
-        Long memberNumber = board.getMemberNumber();
-        memberNumber++;
-    }
 }
