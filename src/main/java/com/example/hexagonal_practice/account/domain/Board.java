@@ -3,6 +3,7 @@ package com.example.hexagonal_practice.account.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,6 +17,9 @@ public class Board {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "board")
+    private List<Member> member;
 
     private String title;
 
