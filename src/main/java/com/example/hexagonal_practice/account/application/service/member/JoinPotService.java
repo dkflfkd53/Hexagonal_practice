@@ -22,13 +22,12 @@ public class JoinPotService implements JoinPotUseCase {
     private final BoardRepositoryPort boardRepositoryPort;
     private final UserFacade userFacade;
 
-    public void joinPot() {
+    public void joinPot(Long boardId) {
         User user = userFacade.currentUser();
-        Board board = boardRepositoryPort.findBoardById(user.getId());
+        Board board = boardRepositoryPort.findBoardById(boardId);
 
         Member member = Member.builder()
                 .id(user.getId())
-                .board(board)
                 .username(user.getUsername())
                 .build();
         board.joinMember();
