@@ -6,6 +6,7 @@ import com.example.hexagonal_practice.account.application.service.user.facade.Us
 import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.account.domain.User;
 import com.example.hexagonal_practice.common.UseCase;
+import com.example.hexagonal_practice.global.exception.user.MemberCrowdedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,8 @@ public class JoinPotService implements JoinPotUseCase {
     public void joinPot(Long boardId) {
         User member = userFacade.currentUser();
         Board board = boardRepositoryPort.findBoardById(boardId);
+
+        if(board.getMemberNumber() == 0)throw MemberCrowdedException.EXCEPTION;
 
         board.joinMember(member);
         board.addMember();

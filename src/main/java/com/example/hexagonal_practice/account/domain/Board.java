@@ -33,7 +33,7 @@ public class Board {
     }
 
     public void addMember() {
-        memberNumber++;
+        memberNumber--;
     }
 
     public void cancelMember(User member) {
@@ -41,7 +41,7 @@ public class Board {
     }
 
     public void minusMember() {
-        memberNumber--;
+        memberNumber++;
     }
 
     public void modifyBoard(String title, String content, Long memberNumber) {
