@@ -1,6 +1,8 @@
 package com.example.hexagonal_practice.account.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -15,6 +17,8 @@ public class Member {
     private Long id;
 
     private String username;
-    @ManyToOne
-    private Board board;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Board boardId;
 }
