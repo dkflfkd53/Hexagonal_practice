@@ -21,8 +21,7 @@ public class Board {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(mappedBy = "boardId", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @OneToMany
     private List<Member> members;
 
     private String title;

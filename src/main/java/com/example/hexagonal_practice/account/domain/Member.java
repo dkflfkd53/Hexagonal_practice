@@ -13,12 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
-    private Board boardId;
 }
