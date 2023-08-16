@@ -21,6 +21,5 @@ public class CancelPotService implements CancelPotUseCase {
         Board board = boardRepositoryPort.findBoardById(boardId);
 
         board.cancelMember(member);
-        board.minusMember();
     }
 }

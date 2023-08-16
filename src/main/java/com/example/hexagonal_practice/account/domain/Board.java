@@ -32,18 +32,10 @@ public class Board {
         members.add(member);
     }
 
-    public void addMember() {
-        memberNumber--;
-    }
-
     public void cancelMember(User member) {
         members.remove(member);
     }
-
-    public void minusMember() {
-        memberNumber++;
-    }
-
+    
     public void modifyBoard(String title, String content, Long memberNumber) {
         this.title = title;
         this.content = content;

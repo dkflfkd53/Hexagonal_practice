@@ -21,9 +21,8 @@ public class JoinPotService implements JoinPotUseCase {
         User member = userFacade.currentUser();
         Board board = boardRepositoryPort.findBoardById(boardId);
 
-        if(board.getMemberNumber() == 0)throw MemberCrowdedException.EXCEPTION;
+        if(board.getMemberNumber() == board.getMembers().size())throw MemberCrowdedException.EXCEPTION;
 
         board.joinMember(member);
-        board.addMember();
     }
 }
