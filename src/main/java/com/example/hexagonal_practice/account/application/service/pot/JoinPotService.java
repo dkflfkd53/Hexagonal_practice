@@ -17,12 +17,9 @@ public class JoinPotService implements JoinPotUseCase {
     private final UserFacade userFacade;
 
     public void joinPot(Long boardId) {
-        User user = userFacade.currentUser();
+        User member = userFacade.currentUser();
         Board board = boardRepositoryPort.findBoardById(boardId);
 
-        User member = User.builder()
-                .username(user.getUsername())
-                .build();
         board.joinMember(member);
         board.addMember();
     }
