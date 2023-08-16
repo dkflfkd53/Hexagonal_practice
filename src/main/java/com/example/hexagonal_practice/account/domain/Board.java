@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Board {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +29,10 @@ public class Board {
     private Long memberNumber;
 
     public void joinMember() {
+        member.add((Member)member);
+    }
+
+    public void addMember() {
         memberNumber++;
     }
 
@@ -36,4 +41,5 @@ public class Board {
         this.content = content;
         this.memberNumber = memberNumber;
     }
+
 }

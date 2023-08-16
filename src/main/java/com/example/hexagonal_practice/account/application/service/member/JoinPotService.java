@@ -31,6 +31,7 @@ public class JoinPotService implements JoinPotUseCase {
                 .username(user.getUsername())
                 .build();
         board.joinMember();
+        board.addMember();
         memberRepositoryPort.saveMember(member);
     }
 
