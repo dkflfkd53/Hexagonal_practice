@@ -1,8 +1,8 @@
 package com.example.hexagonal_practice.account.adapter.in.web;
 
-import com.example.hexagonal_practice.account.application.port.in.member.GetMemberUseCase;
-import com.example.hexagonal_practice.account.application.port.in.member.JoinPotUseCase;
-import com.example.hexagonal_practice.account.domain.Member;
+import com.example.hexagonal_practice.account.application.port.in.pot.GetMemberUseCase;
+import com.example.hexagonal_practice.account.application.port.in.pot.JoinPotUseCase;
+import com.example.hexagonal_practice.account.domain.User;
 import com.example.hexagonal_practice.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 @WebAdapter
 @RestController
 @RequiredArgsConstructor
-public class MemberController {
+public class PotController {
 
     private final JoinPotUseCase joinPotUseCase;
     private final GetMemberUseCase getMemberUseCase;
@@ -26,7 +26,7 @@ public class MemberController {
     }
 
     @GetMapping("/member/{boardId}")
-    public List<Member> getMember(@PathVariable Long boardId) {
+    public List<User> getMember(@PathVariable Long boardId) {
         return getMemberUseCase.getMember(boardId);
     }
 
