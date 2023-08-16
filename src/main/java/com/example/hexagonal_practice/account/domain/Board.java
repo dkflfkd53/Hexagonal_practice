@@ -1,8 +1,6 @@
 package com.example.hexagonal_practice.account.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,11 +16,11 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.ALL})
     private User user;
 
-    @OneToMany
-    private List<Member> members;
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.ALL})
+    private List<User> members;
 
     private String title;
 
@@ -30,7 +28,7 @@ public class Board {
 
     private Long memberNumber;
 
-    public void joinMember(Member member) {
+    public void joinMember(User member) {
         members.add(member);
     }
 
