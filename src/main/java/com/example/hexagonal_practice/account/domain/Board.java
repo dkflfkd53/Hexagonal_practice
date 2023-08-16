@@ -20,7 +20,7 @@ public class Board {
     private User user;
 
     @OneToMany(mappedBy = "board")
-    private List<Member> member;
+    private List<Member> members;
 
     private String title;
 
@@ -28,8 +28,8 @@ public class Board {
 
     private Long memberNumber;
 
-    public void joinMember() {
-        member.add((Member)member);
+    public void joinMember(Member member) {
+        members.add(member);
     }
 
     public void addMember() {

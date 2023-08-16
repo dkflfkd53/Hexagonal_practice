@@ -1,10 +1,8 @@
 package com.example.hexagonal_practice.account.application.service.member;
 
-import com.example.hexagonal_practice.account.adapter.out.persistence.member.MemberRepository;
 import com.example.hexagonal_practice.account.application.port.in.member.JoinPotUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.account.application.port.out.MemberRepositoryPort;
-import com.example.hexagonal_practice.account.application.port.out.UserRepositoryPort;
 import com.example.hexagonal_practice.account.application.service.user.facade.UserFacade;
 import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.account.domain.Member;
@@ -30,7 +28,7 @@ public class JoinPotService implements JoinPotUseCase {
                 .id(user.getId())
                 .username(user.getUsername())
                 .build();
-        board.joinMember();
+        board.joinMember(member);
         board.addMember();
         memberRepositoryPort.saveMember(member);
     }
