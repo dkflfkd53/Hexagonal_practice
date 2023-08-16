@@ -26,7 +26,7 @@ public class MemberController {
     }
 
     @GetMapping("/member/{boardId}")
-    public List<Member> getMember(Long boardId) {
+    public List<Member> getMember(@PathVariable Long boardId) {
         return getMemberUseCase.getMember(boardId);
     }
 
