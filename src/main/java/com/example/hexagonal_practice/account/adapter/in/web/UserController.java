@@ -1,12 +1,10 @@
 package com.example.hexagonal_practice.account.adapter.in.web;
 
+import com.example.hexagonal_practice.account.adapter.dto.request.RefreshRequest;
 import com.example.hexagonal_practice.account.adapter.dto.request.UserRequest;
 import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
 import com.example.hexagonal_practice.account.adapter.dto.response.UserResponse;
-import com.example.hexagonal_practice.account.application.port.in.user.GetMyInfoUseCase;
-import com.example.hexagonal_practice.account.application.port.in.user.LoginUseCase;
-import com.example.hexagonal_practice.account.application.port.in.user.OauthLoginUseCase;
-import com.example.hexagonal_practice.account.application.port.in.user.SignUpUseCase;
+import com.example.hexagonal_practice.account.application.port.in.user.*;
 import com.example.hexagonal_practice.common.WebAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +19,7 @@ public class UserController {
     private final SignUpUseCase signUpUseCase;
     private final LoginUseCase loginUseCase;
     private final GetMyInfoUseCase getMyInfoUseCase;
+    private final TokenRefreshUseCase tokenRefreshUseCase;
     private final OauthLoginUseCase oauthLoginUseCase;
 
     @PostMapping("/signup")
@@ -31,6 +30,11 @@ public class UserController {
     @PostMapping("/login")
     public TokenResponse login(@RequestBody @Valid UserRequest request) {
         return loginUseCase.login(request);
+    }
+
+    @PostMapping("/refresh")
+    public TokenResponse refreshToken(@RequestBody RefreshRequest request) {
+        return tokenRefreshUseCase.tokenRefresh(request.getRefreshToken());
     }
 
     @GetMapping("/user")
