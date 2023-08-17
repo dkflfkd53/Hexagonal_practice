@@ -28,9 +28,9 @@ public class WriteBoardService implements WriteBoardUseCase {
                 .user(user)
                 .build();
 
-        board.joinMember(user);
-
         boardRepositoryPort.saveBoard(board);
+
+        board.joinMember(user);
     }
 
 }

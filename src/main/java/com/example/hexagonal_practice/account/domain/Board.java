@@ -20,7 +20,7 @@ public class Board {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.ALL})
+    @OneToMany(fetch = FetchType.LAZY)
     private List<User> members;
 
     private String title;
