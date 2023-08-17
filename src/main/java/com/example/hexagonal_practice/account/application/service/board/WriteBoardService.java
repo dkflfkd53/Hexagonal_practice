@@ -2,8 +2,8 @@ package com.example.hexagonal_practice.account.application.service.board;
 
 import com.example.hexagonal_practice.account.adapter.dto.request.BoardRequest;
 import com.example.hexagonal_practice.account.application.port.in.board.WriteBoardUseCase;
+import com.example.hexagonal_practice.account.application.port.in.user.UserFacadeUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
-import com.example.hexagonal_practice.account.application.service.user.facade.UserFacade;
 import com.example.hexagonal_practice.account.domain.Board;
 import com.example.hexagonal_practice.account.domain.User;
 import com.example.hexagonal_practice.common.UseCase;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class WriteBoardService implements WriteBoardUseCase {
 
     private final BoardRepositoryPort boardRepositoryPort;
-    private final UserFacade userFacade;
+    private final UserFacadeUseCase userFacade;
 
     public void writeBoard(BoardRequest request) {
         User user = userFacade.currentUser();

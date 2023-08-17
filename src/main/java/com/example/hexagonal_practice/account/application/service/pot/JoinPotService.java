@@ -1,6 +1,7 @@
 package com.example.hexagonal_practice.account.application.service.pot;
 
 import com.example.hexagonal_practice.account.application.port.in.pot.JoinPotUseCase;
+import com.example.hexagonal_practice.account.application.port.in.user.UserFacadeUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.account.application.service.user.facade.UserFacade;
 import com.example.hexagonal_practice.account.domain.Board;
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class JoinPotService implements JoinPotUseCase {
     private final BoardRepositoryPort boardRepositoryPort;
-    private final UserFacade userFacade;
+    private final UserFacadeUseCase userFacade;
 
     public void joinPot(Long boardId) {
         User member = userFacade.currentUser();
