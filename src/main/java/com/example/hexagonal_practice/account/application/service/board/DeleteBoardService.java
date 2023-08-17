@@ -22,7 +22,7 @@ public class DeleteBoardService implements DeleteBoardUseCase {
         User user = userFacade.currentUser();
         Board board = boardRepositoryPort.findBoardById(boardId);
 
-        if(!(board.getUser().equals(user.getUserId())))throw NotWriterException.EXCEPTION;
+        if(!(board.getUser().getId().equals(user.getId())))throw NotWriterException.EXCEPTION;
 
         boardRepositoryPort.deleteBoardById(boardId);
     }

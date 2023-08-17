@@ -23,7 +23,7 @@ public class ModifyBoardService implements ModifyBoardUseCase {
         Board board = boardRepositoryPort.findBoardById(boardId);
         User user = userFacade.currentUser();
 
-        if(!(board.getUser().equals(user.getUserId())))throw NotWriterException.EXCEPTION;
+        if(!(board.getUser().getId().equals(user.getId())))throw NotWriterException.EXCEPTION;
 
         board.modifyBoard(request.getTitle(), request.getContent(), request.getMemberNumber());
     }
