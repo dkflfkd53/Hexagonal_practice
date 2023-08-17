@@ -21,7 +21,7 @@ public class GetMemberService implements GetMemberUseCase {
     public List<MemberResponse> getMember(Long boardId) {
         Board board = boardRepositoryPort.findBoardById(boardId);
 
-        return board.getMembers()
+        return board.getUsers()
                 .stream()
                 .map(MemberResponse::new)
                 .collect(Collectors.toList());

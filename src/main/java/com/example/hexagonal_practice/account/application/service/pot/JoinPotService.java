@@ -22,7 +22,7 @@ public class JoinPotService implements JoinPotUseCase {
         User user = userFacade.currentUser();
         Board board = boardRepositoryPort.findBoardById(boardId);
 
-        if(board.getMemberNumber() == board.getMembers().size())throw MemberCrowdedException.EXCEPTION;
+        if(board.getMemberNumber() == board.getUsers().size())throw MemberCrowdedException.EXCEPTION;
 
         board.joinMember(user);
     }

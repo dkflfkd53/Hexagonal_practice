@@ -27,7 +27,7 @@ public class WriteBoardService implements WriteBoardUseCase {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .memberNumber(request.getMemberNumber())
-                .members(new ArrayList<>())
+                .users(new ArrayList<>())
                 .user(user)
                 .build();
 
