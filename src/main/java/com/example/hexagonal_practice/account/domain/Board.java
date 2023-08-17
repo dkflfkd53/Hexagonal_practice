@@ -3,6 +3,7 @@ package com.example.hexagonal_practice.account.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,7 @@ public class Board {
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<User> members;
+    private List<User> members = new ArrayList<>();
 
     private String title;
 

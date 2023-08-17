@@ -10,6 +10,8 @@ import com.example.hexagonal_practice.common.UseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @RequiredArgsConstructor
 @UseCase
 @Transactional
@@ -25,12 +27,12 @@ public class WriteBoardService implements WriteBoardUseCase {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .memberNumber(request.getMemberNumber())
+                .members(new ArrayList<>())
                 .user(user)
                 .build();
 
-        boardRepositoryPort.saveBoard(board);
-
         board.joinMember(user);
+        boardRepositoryPort.saveBoard(board);
     }
 
 }
