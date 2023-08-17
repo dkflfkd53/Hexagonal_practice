@@ -20,17 +20,17 @@ public class PotController {
     private final GetMemberUseCase getMemberUseCase;
     private final CancelPotUseCase cancelPotUseCase;
 
-    @PostMapping("/member/{boardId}")
+    @PostMapping("/pot/{boardId}")
     public void joinPot(@PathVariable Long boardId) {
         joinPotUseCase.joinPot(boardId);
     }
 
-    @GetMapping("/member/{boardId}")
+    @GetMapping("/pot/{boardId}")
     public List<MemberResponse> getMember(@PathVariable Long boardId) {
         return getMemberUseCase.getMember(boardId);
     }
 
-    @DeleteMapping("/member/{boardId}")
+    @DeleteMapping("/pot/{boardId}")
     public void cancelPot(@PathVariable Long boardId) {
         cancelPotUseCase.cancelPot(boardId);
     }
