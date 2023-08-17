@@ -22,6 +22,7 @@ public enum ErrorCode {
 
     //board
     BOARD_NOT_FOUND(404, "Board not found"),
+    NOT_WRITER(404, "Not writer"),
 
     // general
     BAD_REQUEST(400, "Bad request"),
