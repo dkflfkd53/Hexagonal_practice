@@ -16,7 +16,8 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.ALL})
@@ -35,7 +36,7 @@ public class Board {
     public void cancelMember(User member) {
         members.remove(member);
     }
-    
+
     public void modifyBoard(String title, String content, Long memberNumber) {
         this.title = title;
         this.content = content;

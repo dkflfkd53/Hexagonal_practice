@@ -4,7 +4,6 @@ import com.example.hexagonal_practice.account.adapter.dto.response.MemberRespons
 import com.example.hexagonal_practice.account.application.port.in.pot.GetMemberUseCase;
 import com.example.hexagonal_practice.account.application.port.out.BoardRepositoryPort;
 import com.example.hexagonal_practice.account.domain.Board;
-import com.example.hexagonal_practice.account.domain.User;
 import com.example.hexagonal_practice.common.UseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;

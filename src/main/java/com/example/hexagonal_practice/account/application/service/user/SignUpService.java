@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @UseCase
 @Transactional
 public class SignUpService implements SignUpUseCase {
+
     private final UserRepositoryPort userRepositoryPort;
     private final PasswordEncoder passwordEncoder;
     private final DuplicatedUserIdUseCase duplicatedUserIdUseCase;
@@ -30,6 +31,6 @@ public class SignUpService implements SignUpUseCase {
                 .build();
 
         userRepositoryPort.saveUser(user);
-
     }
+
 }
