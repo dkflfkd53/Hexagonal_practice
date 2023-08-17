@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserRequest {
+public class SignUpRequest {
     @NotNull
     private String userId;
 
