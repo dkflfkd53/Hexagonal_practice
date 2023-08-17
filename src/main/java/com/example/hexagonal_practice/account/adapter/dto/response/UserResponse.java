@@ -8,14 +8,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserResponse {
-    private String userId;
-
     private String username;
 
     private String email;
 
     public UserResponse(User user) {
-        userId = user.getUserId();
         username = user.getUsername();
         email = user.getEmail();
     }

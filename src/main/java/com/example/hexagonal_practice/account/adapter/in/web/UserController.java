@@ -1,7 +1,8 @@
 package com.example.hexagonal_practice.account.adapter.in.web;
 
+import com.example.hexagonal_practice.account.adapter.dto.request.LoginRequest;
 import com.example.hexagonal_practice.account.adapter.dto.request.RefreshRequest;
-import com.example.hexagonal_practice.account.adapter.dto.request.UserRequest;
+import com.example.hexagonal_practice.account.adapter.dto.request.SignUpRequest;
 import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
 import com.example.hexagonal_practice.account.adapter.dto.response.UserResponse;
 import com.example.hexagonal_practice.account.application.port.in.user.*;
@@ -23,12 +24,12 @@ public class UserController {
     private final OauthLoginUseCase oauthLoginUseCase;
 
     @PostMapping("/signup")
-    public void signUp(@RequestBody @Valid UserRequest request) {
+    public void signUp(@RequestBody @Valid SignUpRequest request) {
         signUpUseCase.signUp(request);
     }
 
     @PostMapping("/login")
-    public TokenResponse login(@RequestBody @Valid UserRequest request) {
+    public TokenResponse login(@RequestBody @Valid LoginRequest request) {
         return loginUseCase.login(request);
     }
 

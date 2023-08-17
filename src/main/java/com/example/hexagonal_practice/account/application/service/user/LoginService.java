@@ -1,6 +1,6 @@
 package com.example.hexagonal_practice.account.application.service.user;
 
-import com.example.hexagonal_practice.account.adapter.dto.request.UserRequest;
+import com.example.hexagonal_practice.account.adapter.dto.request.LoginRequest;
 import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
 import com.example.hexagonal_practice.account.application.port.in.user.LoginUseCase;
 import com.example.hexagonal_practice.account.application.port.out.UserRepositoryPort;
@@ -25,7 +25,7 @@ public class LoginService implements LoginUseCase {
     private final JwtTokenProvider jwtTokenProvider;
     private final JwtProperties jwtProperties;
 
-    public TokenResponse login(UserRequest request) {
+    public TokenResponse login(LoginRequest request) {
         Date now = new Date();
 
         User user = userRepositoryPort.findUserByUserId(request.getUserId());
