@@ -1,6 +1,7 @@
 package com.example.hexagonal_practice.global.security.jwt;
 
-import com.example.hexagonal_practice.account.adapter.out.persistence.token.RefreshTokenRepository;
+import com.example.hexagonal_practice.account.adapter.dto.response.TokenResponse;
+import com.example.hexagonal_practice.account.application.port.out.RefreshTokenRepositoryPort;
 import com.example.hexagonal_practice.account.domain.RefreshToken;
 import com.example.hexagonal_practice.global.exception.token.ExpiredTokenException;
 import com.example.hexagonal_practice.global.exception.token.InvalidTokenException;
@@ -25,7 +26,7 @@ public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
     private final CustomUserDetailsService customUserDetailsService;
-    private final RefreshTokenRepository refreshTokenRepository;
+    private final RefreshTokenRepositoryPort refreshTokenRepositoryPort;
 
     public String createAccessToken(String userId) {
 
@@ -51,7 +52,7 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .compact();
 
-        refreshTokenRepository.save(
+        refreshTokenRepositoryPort.saveRefreshToken(
                 RefreshToken.builder()
                         .userId(userId)
                         .token(refreshToken)
@@ -91,6 +92,23 @@ public class JwtTokenProvider {
             return bearerToken.substring(7);
         }
         return null;
+    }
+
+    public TokenResponse tokenRefresh(String refreshToken) {
+        Date now = new Date();
+
+        RefreshToken token = refreshTokenRepositoryPort.findByToken(refreshToken);
+
+        String userId = token.getUserId();
+
+        refreshTokenRepositoryPort.deleteToken(token);
+
+        return TokenResponse.builder()
+                .accessToken(createAccessToken(userId))
+                .refreshToken(createRefreshToken(userId))
+                .accessExpiredAt(new Date(now.getTime() + jwtProperties.getAccessExpiration()))
+                .refreshExpiredAt(new Date(now.getTime() + jwtProperties.getRefreshExpiration()))
+                .build();
     }
 
 }
