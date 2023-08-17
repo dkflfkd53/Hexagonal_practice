@@ -26,12 +26,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         String provider = userRequest.getClientRegistration().getRegistrationId();
         String providerId = oAuth2User.getAttribute("sub");
-        String userId = provider + "_" +providerId;
+        String userId = provider + "_" + providerId;
 
         Optional<User> optionalUser = userRepository.findByUserId(userId);
         User user;
 
-        if(optionalUser.isEmpty()) {
+        if (optionalUser.isEmpty()) {
             user = User.builder()
                     .userId(userId)
                     .username(oAuth2User.getAttribute("name"))
@@ -45,5 +45,4 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         return new CustomUserOauth(user, oAuth2User.getAttributes());
     }
-
 }

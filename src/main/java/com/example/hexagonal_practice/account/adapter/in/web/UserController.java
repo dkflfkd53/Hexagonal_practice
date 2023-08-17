@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/refresh")
-    public TokenResponse refreshToken(@RequestBody RefreshRequest request) {
+    public TokenResponse tokenRefresh(@RequestBody RefreshRequest request) {
         return tokenRefreshUseCase.tokenRefresh(request.getRefreshToken());
     }
 
