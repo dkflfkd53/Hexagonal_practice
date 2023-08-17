@@ -21,7 +21,7 @@ public class Board {
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<User> members;
+    private List<User> users;
 
     private String title;
 
@@ -29,12 +29,12 @@ public class Board {
 
     private Long memberNumber;
 
-    public void joinMember(User member) {
-        members.add(member);
+    public void joinMember(User user) {
+        users.add(user);
     }
 
-    public void cancelMember(User member) {
-        members.remove(member);
+    public void cancelMember(User user) {
+        users.remove(user);
     }
 
     public void modifyBoard(String title, String content, Long memberNumber) {

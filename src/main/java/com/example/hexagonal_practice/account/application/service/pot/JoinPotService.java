@@ -19,11 +19,11 @@ public class JoinPotService implements JoinPotUseCase {
     private final UserFacadeUseCase userFacade;
 
     public void joinPot(Long boardId) {
-        User member = userFacade.currentUser();
+        User user = userFacade.currentUser();
         Board board = boardRepositoryPort.findBoardById(boardId);
 
         if(board.getMemberNumber() == board.getMembers().size())throw MemberCrowdedException.EXCEPTION;
 
-        board.joinMember(member);
+        board.joinMember(user);
     }
 }
