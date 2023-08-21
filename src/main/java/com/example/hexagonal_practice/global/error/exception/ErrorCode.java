@@ -11,23 +11,31 @@ public enum ErrorCode {
 
     // jwt
     EXPIRED_TOKEN(401 , "Expired token"),
+
     INVALID_TOKEN(401, "Invalid token"),
+
     REFRESH_TOKEN_NOT_FOUND(403,"RefreshToken not found"),
 
     //user
     USER_NOT_FOUND(404,"User not found"),
+
     PASSWORD_MISMATCH(404,"Password mismatch"),
+
     USER_EXIST(404,"User already exist"),
+
     MEMBER_CROWDED(404,"Member is crowded"),
 
     //board
     BOARD_NOT_FOUND(404, "Board not found"),
+
     NOT_WRITER(404, "Not writer"),
 
     // general
     BAD_REQUEST(400, "Bad request"),
+
     INTERNAL_SERVER_ERROR(500, "Internal server error");
 
     private final int statusCode;
     private final String message;
+
 }

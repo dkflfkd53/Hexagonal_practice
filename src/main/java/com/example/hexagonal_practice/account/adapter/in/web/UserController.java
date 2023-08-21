@@ -18,9 +18,13 @@ import javax.validation.Valid;
 public class UserController {
 
     private final SignUpUseCase signUpUseCase;
+
     private final LoginUseCase loginUseCase;
+
     private final GetMyInfoUseCase getMyInfoUseCase;
+
     private final TokenRefreshUseCase tokenRefreshUseCase;
+
     private final OauthLoginUseCase oauthLoginUseCase;
 
     @PostMapping("/signup")

@@ -25,7 +25,9 @@ import java.util.Date;
 public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
+
     private final CustomUserDetailsService customUserDetailsService;
+
     private final RefreshTokenRepositoryPort refreshTokenRepositoryPort;
 
     public String createAccessToken(String userId) {

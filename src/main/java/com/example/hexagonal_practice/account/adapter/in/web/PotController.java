@@ -16,7 +16,9 @@ import java.util.List;
 public class PotController {
 
     private final JoinPotUseCase joinPotUseCase;
+
     private final GetMemberUseCase getMemberUseCase;
+
     private final CancelPotUseCase cancelPotUseCase;
 
     @PostMapping("/pot/{boardId}")

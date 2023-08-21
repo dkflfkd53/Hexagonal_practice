@@ -16,9 +16,13 @@ import java.util.List;
 public class BoardController {
 
     private final WriteBoardUseCase writeBoardUseCase;
+
     private final GetBoardDetailsUseCase getBoardDetailsUseCase;
+
     private final GetBoardListUseCase getBoardListUseCase;
+
     private final ModifyBoardUseCase modifyBoardUseCase;
+
     private final DeleteBoardUseCase deleteBoardUseCase;
 
     @PostMapping("/board")
