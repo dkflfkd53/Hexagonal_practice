@@ -3,4 +3,4 @@
 https://www.erdcloud.com/d/G6JWiHoNdegdsygyu
 </br>
 ### api 명세서 링크
-https://www.notion.so/entry-09b7c94bc8f94a22a3726e49a7c55e89?pvs=4
+[https://www.notion.so/entry-09b7c94bc8f94a22a3726e49a7c55e89?pvs=4](https://laser-pine-445.notion.site/API-09b7c94bc8f94a22a3726e49a7c55e89?pvs=4)https://laser-pine-445.notion.site/API-09b7c94bc8f94a22a3726e49a7c55e89?pvs=4
